@@ -40,7 +40,6 @@ export default function Contact() {
                   <option>Pack Básico</option>
                   <option>Pack Pro</option>
                   <option>Pack Business</option>
-                  <option>Personalizada para Empresa / Evento</option>
                 </select>
               </div>
 
