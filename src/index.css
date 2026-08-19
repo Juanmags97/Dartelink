@@ -1,32 +1,147 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import 'tailwindcss';
 
-html {
-  scroll-behavior: smooth;
+@theme {
+  /* typography */
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', sans-serif;
+
+  /* surfaces */
+  --color-ink: #0a0a0b;
+  --color-ink-soft: #0c0c0e;
+  --color-surface: #101012;
+  --color-surface-raised: #131316;
+
+  /* brand */
+  --color-brand: #29abe2;
+  --color-brand-light: #3fbaee;
+  --color-brand-deep: #0e7fb8;
+  --color-on-brand: #06131b;
+
+  /* text */
+  --color-muted: #9ca3af;
+  --color-subtle: #6b7280;
+  --color-faint: #4b5563;
+  --color-soft: #b4bcc6;
+
+  /* utility brand */
+  --color-whatsapp: #25d366;
+  --color-whatsapp-light: #2fe276;
+
+  /* glows & shadows */
+  --shadow-brand-sm: 0 0 34px -8px rgba(41, 171, 226, 0.75);
+  --shadow-brand-md: 0 0 40px -6px rgba(41, 171, 226, 0.7);
+  --shadow-brand-lg: 0 0 60px -8px rgba(41, 171, 226, 0.85);
+  --shadow-whatsapp: 0 0 44px -6px rgba(37, 211, 102, 0.8);
+  --shadow-device: 0 40px 90px -30px rgba(0, 0, 0, 0.9);
+
+  /* layout */
+  --spacing-header: 68px;
+  --spacing-header-lg: 76px;
+
+  /* motion */
+  --animate-marquee: dl-marquee 30s linear infinite;
+  --animate-panel-in: dl-panel-in 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-panel-item-in: dl-panel-item-in 0.36s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-body {
-  background-color: #0a0a0c;
-  color: #ffffff;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  overflow-x: hidden;
+@keyframes dl-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
 }
 
-/* Scrollbar personalizado */
-::-webkit-scrollbar {
-  width: 8px;
+@keyframes dl-panel-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -10px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
 
-::-webkit-scrollbar-track {
-  background: #0a0a0c;
+@keyframes dl-panel-item-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
 
-::-webkit-scrollbar-thumb {
-  background: #23232a;
-  border-radius: 4px;
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-ink);
+    color: #ffffff;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  video {
+    display: block;
+  }
+
+  /* keep anchor targets clear of the sticky header */
+  [id] {
+    scroll-margin-top: calc(var(--spacing-header) + 12px);
+  }
+
+  @media (min-width: 1024px) {
+    [id] {
+      scroll-margin-top: calc(var(--spacing-header-lg) + 12px);
+    }
+  }
+
+  ::selection {
+    background: var(--color-brand);
+    color: var(--color-on-brand);
+  }
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #c68b2a;
+@utility marquee-track {
+  display: flex;
+  width: max-content;
+  animation: var(--animate-marquee);
+}
+
+@utility marquee-mask {
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+@utility line-clip {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+}
+
+@utility text-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+@utility text-stroked {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  [class*='animate-panel'] {
+    animation: none;
+  }
 }
