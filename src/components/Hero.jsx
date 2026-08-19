@@ -1,3 +1,4 @@
+import fuaa from '../assets/dartelink-vid01.webm'
 export default function Hero() {
   const highlights = [
     { title: 'Tecnología NFC', desc: 'Acercá y conectá al instante' },
@@ -12,7 +13,7 @@ export default function Hero() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
+
           {/* Contenido Izquierda */}
           <div className="lg:col-span-7 text-center lg:text-left space-y-6">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-[1.15]">
@@ -21,7 +22,7 @@ export default function Hero() {
                 dejá huella siempre.
               </span>
             </h1>
-            
+
             <p className="text-base sm:text-lg text-gray-400 max-w-xl mx-auto lg:mx-0 font-normal">
               Compartí tu información, redes y servicios de manera rápida, profesional y sustentable.
             </p>
@@ -57,10 +58,14 @@ export default function Hero() {
             <div className="relative w-full max-w-md">
               {/* Contenedor Mockup con bordes redondeados y sombra */}
               <div className="relative z-10 bg-gradient-to-b from-[#23232a] to-[#131317] p-2 rounded-[2.5rem] border border-[#23232a] shadow-2xl">
-                <img
-                  src="/assets/hero-mockup.png"
-                  alt="Dartelink App & Card Preview"
+                <video
+                  src={fuaa}
+                  aria-label="Dartelink App & Card Preview"
                   className="rounded-[2.2rem] w-full h-auto object-cover"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
                 />
               </div>
             </div>

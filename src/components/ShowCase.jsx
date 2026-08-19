@@ -1,10 +1,10 @@
 export default function Showcase() {
   const images = [
-    {
-      title: 'Networking en Eventos',
-      subtitle: 'Causá impacto en conferencias y congresos.',
-      src: '/assets/showcase-1.jpg',
-    },
+    // {
+    //   title: 'Networking en Eventos',
+    //   subtitle: 'Causá impacto en conferencias y congresos.',
+    //   src: '/assets/showcase-1.jpg',
+    // },
     {
       title: 'Reuniones de Negocios',
       subtitle: 'Compartí propuestas y catálogos en el momento.',
@@ -30,7 +30,7 @@ export default function Showcase() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {images.map((item, idx) => (
             <div key={idx} className="group relative rounded-2xl overflow-hidden border border-[#23232a] bg-[#131317]">
               <div className="h-64 sm:h-72 w-full overflow-hidden">
